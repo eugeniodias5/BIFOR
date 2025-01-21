@@ -1,12 +1,11 @@
-import torch
-from torchvision.models import convnext_small, convnext_large
+from torchvision.models import convnext_small
 import torch.nn as nn
 
 class Bifor(nn.Module):
     def __init__(self):
         super(Bifor, self).__init__()
         # Load the pre-trained ConvNeXT model
-        model = convnext_large(weights="IMAGENET1K_V1")
+        model = convnext_small(weights="IMAGENET1K_V1")
 
         # Remove the classifier
         self.feature_extractor = nn.Sequential(*(list(model.children())[:-1]))
