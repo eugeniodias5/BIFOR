@@ -10,7 +10,7 @@ class BackgroundSampler(Sampler):
        Used for training the model under offline triplet loss.
 
     Args:
-        dataset (list): Contains tuples of (img_path(s), id).
+        dataset (list): Contains tuples of (img_tensor, id).
         batch_size (int): Total number of images in a batch.
         model (torch.nn.Module): Neural model used to calculate embeddings.
         device (str): Device (e.g., 'cuda' or 'cpu') to run the model on.
@@ -136,7 +136,7 @@ class OfflineSampler:
        Used for training the model under offline triplet loss without using embeddings.
 
     Args:
-        dataset (list): Contains tuples of (img_path(s), id).
+        dataset (list): Contains tuples of (img_tensor, id).
         batch_size (int): Total number of images in a batch.
     """
 

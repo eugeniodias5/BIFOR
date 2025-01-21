@@ -10,20 +10,20 @@ import torch
 from torch.utils.data import DataLoader
 
 class OnlineBackgroundSampler(Sampler):
-    """
+    '''
     Sampler that forms batches of samples based on the background similarity.
     
     This sampler divides the dataset into clusters such that each cluster contains identities that fill up a batch evenly.
     Any remaining identities that cannot fill a batch are grouped together in a single batch.
 
     Args:
-        dataset (list): Contains tuples of (img_path(s), id).
+        dataset (list): Contains tuples of (img_tensor, id).
         batch_size (int): Total number of images in a batch.
-        num_instances (int): Number of instances per identity in a batch.
-        model (torch.nn.Module): Neural model used to calculate embeddings.
-        device (str): Device (e.g., 'cuda' or 'cpu') to run the model on.
-        num_workers (int): Number of workers for loading the data.
-    """
+        num_instances (int): Number of images per identity in a batch.
+        model: Model f(1) used to calculate embeddings based on the background.
+        device: Device to run the model.
+        num_workers: Number of workers for loading the data.
+    '''
 
     def __init__(self, dataset, batch_size, num_instances, model, device='cpu', num_workers=8):
         if batch_size < num_instances:
@@ -149,10 +149,12 @@ class OnlineBackgroundSampler(Sampler):
     def __len__(self):
         return len(self.batches)
     
+
 class RandomIdentitySampler(Sampler):
     """
     Randomly sample N identities, then for each identity,
     randomly sample K instances, therefore batch size is N*K.
+
     Args:
     - data_source (list): list of (img_path, pid, camid).
     - num_instances (int): number of instances per identity in a batch.

@@ -14,10 +14,21 @@ def fliplr(img, device):
     return img_flip
 
 
-'''
-Test function that receives the model, data loaders and returns the calculated metrics: cmc and map.
-'''
 def test(model, dataloader, device, cfg, top_k=50):  
+    '''
+    Test function that receives the model, data loaders and returns the calculated metrics: cmc and map.
+
+    Args:
+        model: Model to evaluate.
+        dataloader: Test dataloader.
+        device: Device to run the model.
+        cfg: Configuration dictionary (yaml file).
+        top_k: Maximum k to calculate the top-k.
+
+    Returns:
+        test_res: Dictionary containing the calculated metrics (mAP and CMC).
+    '''
+
     model.eval()
 
     test_res = {"map": 0.0, "cmc": []}

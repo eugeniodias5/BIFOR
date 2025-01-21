@@ -2,6 +2,10 @@ from torchvision.models import convnext_small
 import torch.nn as nn
 
 class Bifor(nn.Module):
+    '''
+    Model BIFOR (f(2)), a convnext_small without the classifier.
+    '''
+
     def __init__(self):
         super(Bifor, self).__init__()
         # Load the pre-trained ConvNeXT model

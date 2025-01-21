@@ -7,7 +7,7 @@ import pandas as pd
 from collections import OrderedDict
 
 def compute_cosine_distance_matrix(features):
-    """
+    '''
     Compute the cosine distance matrix.
 
     Args:
@@ -15,7 +15,7 @@ def compute_cosine_distance_matrix(features):
 
     Returns:
         Tensor: A tensor of shape (N, N) containing the cosine distances between vectors.
-    """
+    '''
     # Normalize the feature vectors
     features_norm = torch.nn.functional.normalize(features, p=2, dim=1)
     # Compute the cosine similarity matrix
@@ -127,7 +127,20 @@ def save_closest_imgs_json(img_paths, features, save_path, max_closest=50):
     print(f"Saved closest images JSON to {save_path}")
 
 def save_metrics(save_path, y_loss=None, y_acc=None, y_margin=None, y_map=None, y_cmc=None):
-    
+    '''
+    Save the metrics data to a csv file and the performance graphs to png files.
+
+    Args:
+        save_path (str): The path to save the metrics data and performance graphs.
+        y_loss (dict): Dictionary containing the loss values for train and test sets.
+        y_acc (dict): Dictionary containing the accuracy values for train and test sets.
+        y_margin (dict): Dictionary containing the margin values for train and test sets.
+        y_map (dict): Dictionary containing the mAP values for test set.
+        y_cmc (dict): Dictionary containing the CMC values for test set.
+
+    '''
+
+
     # Drawing performances graphs
     if y_loss is not None:
         plt.figure(figsize=(10, 5))
@@ -267,7 +280,7 @@ def load_model(model, ckpt_path, model_name=None, device='cpu'):
     else: state_dict = ckpt
     
     # Load the state dictionary into the model
-    model.load_state_dict(ckpt)
+    model.load_state_dict(state_dict)
 
     # Ensure the model is on the correct device
     model.to(device)
@@ -281,9 +294,9 @@ def resume_training(model, results_folder, device='cpu', optimizer=None, schedul
     Parameters:
     - model: The model object to which the checkpoint will be loaded.
     - results_folder: The directory path where checkpoints are stored.
-    - device: The device to load the model onto ('cpu' or 'cuda').
-    - optimizer: The optimizer object, if it is to be restored.
-    - scheduler: The scheduler object, if it is to be restored.
+    - device: The device to load the model.
+    - optimizer: The optimizer.
+    - scheduler: The learning rate scheduler.
     - epoch_label: The label to identify which checkpoint to load ('last_epoch', 'best_epoch', etc.).
 
     Returns:

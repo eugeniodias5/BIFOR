@@ -5,8 +5,16 @@ import torch.nn.functional as F
 
 from torchvision import models
 
-
 class BackgroundNet(pl.LightningModule):
+    '''
+    Model f(1), that generates features based on the background.
+    
+    Args:
+        lr: Learning rate for the optimizer.
+        lr_sched_step: Step size for the learning rate scheduler.
+        lr_sched_gamma: Gamma value for the learning rate scheduler.
+    '''
+    
     def __init__(self, lr=1e-5, lr_sched_step=5, lr_sched_gamma=0.1):
         super().__init__()
         self.lr = lr

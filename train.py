@@ -18,6 +18,18 @@ y_cmc = {"test": []}
 
 
 def train_model(model, optimizer, scheduler, train_dl, test_dl, device, cfg):  
+    '''
+    Args:
+        model: Model to train.
+        optimizer: Optimizer.
+        scheduler: Learning rate scheduler.
+        train_dl: Train dataloader.
+        test_dl: Test dataloader.
+        device: Device to run the model.
+        cfg: Configuration dictionary (yaml file).
+    
+    '''
+
     dataset_size = len(train_dl.sampler)
 
     since = time.time()
@@ -199,6 +211,19 @@ def train_model(model, optimizer, scheduler, train_dl, test_dl, device, cfg):
 
 
 def hard_triplet_similarity(features, labels):
+    '''
+    Function to find the hard positives and negatives within a mini-batch.
+    
+    Args:
+        features: Features extracted from the model.
+        labels: Labels of the samples.
+
+    Returns:
+        psim: Similarity of the hard positives.
+        nsim: Similarity of the hard negatives.
+
+    '''
+
     # We find the hard positives and negatives
     norm_feats = F.normalize(features, p=2, dim=1)
     cos_similarity = torch.matmul(norm_feats, norm_feats.t())
