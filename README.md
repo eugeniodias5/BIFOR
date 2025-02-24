@@ -2,7 +2,7 @@
 # BIFOR
 
 Repository for the paper "**A Background-Invariant Method for Generalizable Dog Re-identification in Non-Controlled Environments**". 
-Under review by the [International Journal of Comuter Vision](https://link.springer.com/journal/11263).
+Under review by the [International Journal of Computer Vision](https://link.springer.com/journal/11263).
 
 ## Table of Contents 
 
@@ -41,7 +41,7 @@ Alternatively, search for your preferred library version in the [Pytorch website
 Download the remaining libraries using the command `pip install -r requirements.txt`.
  
  ## Datasets
- To download the YT-BB-Dog and the Sibetan, please refer to the link provided in our paper (**Declarations > Data Availability** section in the folder "Data_BIFOR/Datasets").
+ To download the YT-BB-Dog and the Sibetan, please refer to the link provided in our paper in the section **Declarations > Data Availability**. The datasets are in the folder "Data_BIFOR/Datasets").
 
  Please provide the path to the dataset in the parameter `data_dir` of your configuration file (refer to `config.yaml` as an example). The parameter `dataset_name` should be set as `"YT-BB-Dog"` or `"Sibetan"`.
 
