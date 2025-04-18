@@ -2,7 +2,7 @@
 # BIFOR
 
 Repository for the paper "**A Background-Invariant Method for Generalizable Dog Re-identification in Non-Controlled Environments**". 
-Under review by the [International Journal of Computer Vision](https://link.springer.com/journal/11263).
+Under review by the [Machine Vision and Applications](https://link.springer.com/journal/138).
 
 ## Table of Contents 
 
