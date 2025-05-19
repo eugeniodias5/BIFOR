@@ -1,0 +1,78 @@
+# Training Configuration
+# GPU IDs to use, e.g., "0" for one GPU or "0,1,2" for multiple GPUs
+gpu_ids: "0"
+
+# Name of the output model
+model_name: "bifor"
+
+# Dataset name. Choose between "YT-BB-Dog" and "Sibetan"
+dataset_name: "Sibetan"
+
+# Directory path for training data
+data_dir: "./datasets/Sibetan"
+
+# Path to the ground truth labels. Applied for the Sibetan dataset
+gt_labels_path: "./datasets/Sibetan/gt_sibetan_no_mono_cluster.json"
+
+# Number of instances per class in a batch
+num_instances: 8
+
+# Embedding size
+embedding_size: 768
+
+# Batch size for training
+batch_size: 32
+
+# Number of classes
+num_classes: 2000
+
+# Total number of epochs
+num_epochs: 200
+
+# Number of workers to load the dataset
+num_workers: 8
+
+# Margin for the triplet loss function
+margin: 0.2
+
+# Learning rate for the optimizer
+lr: 0.0001
+
+# Test every n epochs
+test_every_n: 1 # Test and save the best model's weights
+
+# Learning rate warm-up factor
+warmup: 0.1 # A ratio of epochs are used to warmup the learning rate
+
+early_stop: 20 # Number of epochs to wait before early stopping
+
+# Folder to save the results
+save_dir: "./results/bifor" # Path to the folder containing the results and model's weights
+
+# Whether to resume the training from the last checkpoint
+resume: False
+
+# Path to the checkpoint model. Read only if resume is true
+load_resume_dir: "./results/bifor"
+
+# Define if a checkpoint should be loaded
+load_model: True
+
+# Path to the ckeckpoint model. Read only if load_model is true
+ckpt_path: "./results/bifor_online/best.pth"
+
+# Whether to use online triplet mining or not
+online: True
+
+# Sampling method for the dataset
+sampler: "bifor" # random or bifor
+
+# Path to the model used to sample the dataset. Used if bifor is true
+sampler_path: "./weights/background_net/background_net.ckpt"
+
+# Parameter that defines if the model is going to be trained or only tested
+test_only: True
+
+# If this parameter is true, we save with each image path as a key and a list of paths to its closest images in the latent space, 
+# according to the loaded model
+save_closest_json: True
